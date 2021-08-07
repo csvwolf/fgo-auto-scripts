@@ -33,7 +33,15 @@ ui.layout(
         </horizontal>
         <button id="clear">清空输入框</button>
         <input id="custom" inputType="textMultiLine"/>
-        <text textSize="16sp">UI picker</text>
+        <text>运算单元</text>
+        <button id="compile">解析</button>
+        <button id="affect">生效</button>
+        <horizontal>
+            <input id="name" hint="配置名" w="200"></input>
+            <button id="save">保存（不会生效）</button>
+        </horizontal>
+        <text id="result"></text>
+        <text textSize="16sp">UI picker 简易输入工具</text>
         <horizontal>
             <text>从者1</text>
             <spinner id="s1to" entries="默认|从者1|从者2|从者3"></spinner>
@@ -69,14 +77,6 @@ ui.layout(
             <button id="change">换人</button>
         </horizontal>
         <button id="nextTurn">Next Turn</button>
-        <text>运算单元</text>
-        <button id="compile">解析</button>
-        <button id="affect">生效</button>
-        <horizontal>
-            <input id="name" hint="保存的名字" w="200"></input>
-            <button id="save">保存（不会生效）</button>
-        </horizontal>
-        <text id="result"></text>
     </vertical>
     </ScrollView>
 );
