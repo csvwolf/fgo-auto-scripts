@@ -59,3 +59,8 @@ GitHub Relaease: <https://github.com/csvwolf/fgo-auto-scripts/releases>
 
 ## TODO
 - **UI 过丑，但是 android UI 好难哦 -^-**
+
+## Screenshot
+安卓 UI 我不会啊！
+
+![Screenshot_2021-08-08-01-39-00-699_me codesky fgo](https://user-images.githubusercontent.com/8280645/128609221-9008efd7-d602-4da5-a24c-326055104cf4.jpg)
