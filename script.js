@@ -11,6 +11,8 @@ var utils = require('./utils')
 var defaults = require('./default')
 var getCommands = require('./commands')
 
+setScreenMetrics(1080, 2340)
+
 const click1 = utils.click
 const sleep1 = utils.sleep
 const readImage = utils.readImage

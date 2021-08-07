@@ -1,5 +1,8 @@
 
 var utils = require('./utils')
+
+setScreenMetrics(1080, 2340)
+
 const click2 = utils.click
 const sleep2 = utils.sleep
 
@@ -40,7 +43,6 @@ const ChangeS4 = [1371, ChangeY]
 const ChangeS5 = [1703, ChangeY]
 const ChangeS6 = [2008, ChangeY]
 const ChangeConfirm = [1353, 958]
-
 
 function useMasterSkill(i) {
   click2(MasterSkillStart[0], MasterSkillStart[1])

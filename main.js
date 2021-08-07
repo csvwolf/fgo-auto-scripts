@@ -3,7 +3,7 @@
 const getCommandResult = require('./commands')
 const storage = storages.create("fgo")
 let w = null
-
+console.log(device.width, device.height)
 // 悬浮窗
 threads.start(function() {
     w = require('./floaty.js')()
