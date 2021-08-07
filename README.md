@@ -63,4 +63,4 @@ GitHub Relaease: <https://github.com/csvwolf/fgo-auto-scripts/releases>
 ## Screenshot
 安卓 UI 我不会啊！
 
-![Screenshot_2021-08-08-01-39-00-699_me codesky fgo](https://user-images.githubusercontent.com/8280645/128609221-9008efd7-d602-4da5-a24c-326055104cf4.jpg)
+![IMG_20210808_015551](https://user-images.githubusercontent.com/8280645/128609657-31738dec-808f-4863-a634-6e4db2004e66.jpg)
