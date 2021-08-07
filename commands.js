@@ -9,8 +9,11 @@ const sleep2 = utils.sleep
 const SkillY = 880
 const MasterSkillY = 479
 const ChangeY = 536
+const AvatarY = 614
 
-const RinAvatar = [1230,614]
+const Avatar1 = [732, AvatarY]
+const Avatar2 = [1230, AvatarY]
+const Avatar3 = [1660, AvatarY]
 const Confirm = [1569,655]
 
 // 从者一号位
@@ -50,12 +53,14 @@ function useMasterSkill(i) {
   use(i)
 }
 
-function use(i) {
+function use(t) {
+  var i = t[0]
+  var avatar = t[1]
   click2(i[0],i[1])
   sleep2(200)
   click2(Confirm[0],Confirm[1])
   sleep2(100)
-  click2(RinAvatar[0],RinAvatar[1])
+  click2(avatar[0],avatar[1])
   sleep2(3000)
 }
 
@@ -97,6 +102,13 @@ const PointList = {
   'm:3,0': MasterSkill3
 }
 
+const AvatarList = {
+  0: Avatar2, // 默认走 2 号位
+  1: Avatar1,
+  2: Avatar2,
+  3: Avatar3
+}
+
 const ChangeList = {
   1: ChangeS1,
   2: ChangeS2,
@@ -109,9 +121,9 @@ const ChangeList = {
 const translate = function(i) {
   switch (i[1]) {
     case 's':
-      return '从者 ' + i[2] + ' 技能 ' + i[3] + ' \n'
+      return '从者 ' + i[2] + ' 技能 ' + i[3] + '给 ' + i[4] + ' 从者\n'
     case 'm':
-      return '御主技能 ' + i[2] + '\n'
+      return '御主技能 ' + i[2] + '给 ' + i[4] + '从者\n'
     case 'c':
       return '换人 从者 ' + i[2] + '与 ' + i[3] + ' 交换\n'
   }
@@ -119,9 +131,9 @@ const translate = function(i) {
 
 /**
  * 一行一条指令
- * s:1,2 表示 从者 1 技能 2
- * m:1,0 表示 御主技能 1 （懒得特殊处理 统一一下格式好了）
- * c:1,4 表示换人服 1 位换 4 位从者
+ * s:1,2,2 表示 从者 1 技能 2 给 从者 2
+ * m:1,0,2 表示 御主技能 1 给 二号位从者（懒得特殊处理 统一一下格式好了）
+ * c:1,4,0 表示换人服 1 位换 4 位从者
  * 
  * ---\n
  * 区分一面二面和三面
@@ -141,7 +153,7 @@ module.exports = function (text) {
 
     // 解析命令
     turns[i].split('\n').filter((c) => !!c).forEach(function(command) {
-      const c = /^(\w):(\d),(\d)$/.exec(command)
+      const c = /^(\w):(\d),(\d),(\d)$/.exec(command)
       if (!c) {
         toast('错误的指令')
         console.log('指令错误', command)
@@ -150,13 +162,14 @@ module.exports = function (text) {
       resultText += translate(c)
       const _r = {f: CommandList[c[1]]}
       if (c[1] !== 'c') {
-        _r['p'] = PointList[c[0]]
+        _r['p'] = [PointList[c[0].slice(0,-2)], AvatarList[c[4]]]
       } else {
         _r['p'] =  [ChangeList[c[2]], ChangeList[c[3]]]
       }
       result[i].push(_r)
     })
   }
+
   return {
     resultText: resultText,
     result: result,

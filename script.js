@@ -138,7 +138,7 @@ function use3TInBlue() {
     // findAttack()
     // use(R1S3)
     // fight()
-    toast('end')
+    // toast('end')
 }
 
 function eatApple() {
@@ -172,7 +172,7 @@ function clickRefresh() {
 }
 
 
-function findAttack () {
+function findAttack() {
     while (!findButton(Attack, {maxTimes:1})) {
         
     }
@@ -182,6 +182,7 @@ function findAttack () {
 }
 
 function nextTurn() {
+    toast('完成')
     let p = null
     while (!p) {
         click1(1920,993)
@@ -197,15 +198,19 @@ function useVersion() {
         case 1:
             toast('苍玉的魔法少女')
             use3TInBlue()
+            break
         case 2:
              toast('宝石翁')
              use3TInDiamond()
+             break
         case 3:
             toast('2004')
             use2004()
+            break
         case 4:
             toast('使用自定义配置')
             useCustom(customCmd)
+            break
     }
 }
 
