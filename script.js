@@ -7,36 +7,25 @@ if (!requestScreenCapture(true)) {
 
 sleep(300)
 
+var utils = require('./utils')
+var defaults = require('./default')
+var getCommands = require('./commands')
+
+const click1 = utils.click
+const sleep1 = utils.sleep
+const readImage = utils.readImage
+
 const storage = storages.create("fgo")
 const apple = storage.get("apple") || false
 const version = storage.get("version") || 1
+const customCmd = storage.get('customCmd') || ''
+
 toast(apple ? '吃苹果' : '不吃苹果')
-
-const SkillY = 880
-const MasterSkillY = 479
-const RinAvatar = [1230,614]
-const Confirm = [1569,655]
-const C1S1 = [370,SkillY]
-const C1S2 = [507,SkillY]
-const C1S3 = [619,SkillY]
-
-const R1S1 = [852,SkillY]
-const R1S2 = [997,SkillY]
-const R1S3 = [1129,SkillY]
-
-const C3S1 = [1315,SkillY]
-const C3S2 = [1452,SkillY]
-const C3S3 = [1584,SkillY]
 
 const Battle = [1953,900]
 const CardSP = [1199,340]
 const Card1= [475,764]
 const Card2 = [855,764]
-
-const MasterSkillStart = [2047, MasterSkillY]
-const MasterSkill1 = [1633, MasterSkillY]
-const MasterSkill2 = [1770, MasterSkillY]
-const MasterSkill3 = [1892, MasterSkillY]
 
 const NextImage =  readImage('./assets/next.jpg')
 const HelpImage = readImage('./assets/help-v2.jpg')
@@ -49,22 +38,6 @@ events.on('exit', function() {
     GoldAppleImage.recycle()
     Attack.recycle()
 })
-
-// click with offset
-function click1(x, y) {
-    const _x = x+random(-10,10)
-    const _y = y+random(-10,10)
-    click(_x, _y)
-}
-
-function sleep1(t) {
-    sleep(t + random(0, 80))
-}
-
-function readImage(img) {
-    const b = images.read(img)
-    return b
-}
 
 function findButton(b, options) {
     const maxTimes = options ? options.maxTimes || 100 : 200
@@ -81,21 +54,6 @@ function findButton(b, options) {
     return false
 }
 
-function useMasterSkill(i) {
-    click1(MasterSkillStart[0], MasterSkillStart[1])
-    sleep1(150)
-    use(i)
-}
-
-function use(i) {
-    click1(i[0],i[1])
-    sleep1(200)
-    click1(Confirm[0],Confirm[1])
-    sleep1(100)
-    click1(RinAvatar[0],RinAvatar[1])
-    sleep1(3000)
-}
-
 function fight() {
     click1(Battle[0],Battle[1])
     sleep1(1500)
@@ -107,86 +65,77 @@ function fight() {
     sleep1(20000)
 }
 
-// 宝石翁
-function use3TInDiamond() {
-    findAttack()
-    // 一面
 
-    use(C1S3)
-    use(C3S3)
-    use(R1S1)
-    use(R1S2)
-
-
-    fight()
-
-    // 二面
-    findAttack()
-    use(C1S2)
-    use(C3S2)
-    use(C1S1)
-    use(C3S1)
-    fight()
-    
-    
-
-    // 三面
-    findAttack()
-    use(R1S3)
-    fight()
-    toast('end')
+function useCustom(t) {
+    const result = getCommands(t).result
+    result.forEach((r) => {
+        findAttack()
+        r.forEach((u) => {
+            console.log(u, u.f, u.p)
+            u.f(u.p)
+        })
+        fight()
+    })
 }
 
+// 宝石翁
+function use3TInDiamond() {
+    useCustom(defaults.RubyMan)
+}
+
+
 function use2004() {
-    findAttack()
-    // 一面
-    use(C1S3)
-    use(C3S3)
-    use(R1S1)
-    use(R1S2)
-    use(C1S2)
-    use(C3S2)
-    use(C1S1)
-    use(C3S1)
-    fight()
+    useCustom(defaults.Future2004)
+    // findAttack()
+    // // 一面
+    // use(C1S3)
+    // use(C3S3)
+    // use(R1S1)
+    // use(R1S2)
+    // use(C1S2)
+    // use(C3S2)
+    // use(C1S1)
+    // use(C3S1)
+    // fight()
     
-    // 二面
-    findAttack()
-    useMasterSkill(MasterSkill3)
-    use(R1S3)
-    fight()
+    // // 二面
+    // findAttack()
+    // useMasterSkill(MasterSkill3)
+    // use(R1S3)
+    // fight()
     
-    // 三面
-    useMasterSkill(MasterSkill1)
-    fight()
-    toast('end')
+    // // 三面
+    // useMasterSkill(MasterSkill1)
+    // fight()
+    // toast('end')
 }
 
 // 苍玉的魔法少女
 function use3TInBlue() {
-    findAttack()
-    // 一面
-    use(C1S2)
-    use(C3S2)
-    use(C1S3)
-    use(C3S3)
-    use(R1S1)
-    use(R1S2)
-    use(C3S1)
+    useCustom(defaults.BlueMagicGirl)
+    // findAttack()
+    // // 一面
+    // use(C1S2)
+    // use(C3S2)
+    // use(C1S3)
+    // use(C3S3)
+    // use(R1S1)
+    // use(R1S2)
+    // use(C3S1)
 
-    fight()
+    // fight()
 
-    // 二面
-    findAttack()
-    use(C1S1)
-    fight()
+    // // 二面
+    // findAttack()
+    // use(C1S1)
+    // fight()
     
     
 
-    // 三面
-    findAttack()
-    use(R1S3)
-    fight()
+    // // 三面
+    // findAttack()
+    // use(R1S3)
+    // fight()
     toast('end')
 }
 
@@ -252,6 +201,9 @@ function useVersion() {
         case 3:
             toast('2004')
             use2004()
+        case 4:
+            toast('使用自定义配置')
+            useCustom(customCmd)
     }
 }
 

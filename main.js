@@ -1,62 +1,67 @@
-var path = "./script.js";
-if (!files.exists(path)) {
-    toast("脚本script " + path);
-    exit();
-}
-var window = floaty.window(
-    <horizontal>
-        <button id="action" text="开始运行" w="90" h="40" bg="#77ffffff"/>
-    </horizontal>
+"ui";
+
+const getCommandResult = require('./commands')
+const storage = storages.create("fgo")
+let w = null
+
+// 悬浮窗
+threads.start(function() {
+    w = require('./floaty.js')()
+    w.setSize(0, 0)
+})
+
+// ui mode
+ui.layout(
+    <vertical padding="16">
+        <button id="start">Start!</button>
+        <checkbox id="apple" text="吃苹果"/>
+        <radiogroup id="version">
+            <radio text="苍玉的魔法少女"/>
+            <radio text="宝石翁"/>
+            <radio text="2004御主服"/>
+            <radio text="自定义" />
+        </radiogroup>
+        <text textSize='16sp'>自定义</text>
+        <input id="custom" lines='3' />
+        <button id="compile">解析</button>
+        <button id="save">save</button>
+        <text id="result"></text>
+    </vertical>
 );
 
-setInterval(() => {}, 1000);
+ui.apple.checked = storage.get("apple") || false
+const version = storage.get('version') || 1
+ui.version.check(
+    ui.version.getChildAt(version-1).getId()
+)
 
-var execution = null;
-                          
-//记录按键被按下时的触摸坐标
-var x = 0,
-    y = 0;
-//记录按键被按下时的悬浮窗位置
-var windowX, windowY;
-//记录按键被按下的时间以便判断长按等动作
-var downTime;
+const customCmd = storage.get('customCmd') || ''
+ui.custom.setText(customCmd || '')
 
-window.action.setOnTouchListener(function(view, event) {
-    switch (event.getAction()) {
-        case event.ACTION_DOWN:
-            x = event.getRawX();
-            y = event.getRawY();
-            windowX = window.getX();
-            windowY = window.getY();
-            downTime = new Date().getTime();
-            return true;
-        case event.ACTION_MOVE:
-            //移动手指时调整悬浮窗位置
-            window.setPosition(windowX + (event.getRawX() - x),
-                windowY + (event.getRawY() - y));
-            //如果按下的时间超过1.5秒判断为长按，退出脚本
-            if (new Date().getTime() - downTime > 1500) {
-                exit();
-            }
-            return true;
-        case event.ACTION_UP:
-            //手指弹起时如果偏移很小则判断为点击
-            if (Math.abs(event.getRawY() - y) < 5 && Math.abs(event.getRawX() - x) < 5) {
-                onClick();
-            }
-            return true;
-    }
-    return true;
+ui.apple.on("check", (checked) => {
+    storage.put("apple", checked)
 });
 
-function onClick() {
-    if (window.action.getText() == '开始运行') {
-        execution = engines.execScriptFile(path);
-        window.action.setText('停止运行');
-    } else {
-        if (execution) {
-            execution.getEngine().forceStop();
-        }
-        window.action.setText('开始运行');
-    }
-}
+ui.version.setOnCheckedChangeListener(function (radioGroup, id) {
+    let i = id % radioGroup.getChildCount()
+    if (i == 0) { i = radioGroup.getChildCount() }
+    const r = radioGroup.getChildAt(i - 1).getText()
+    toast(r)
+    storage.put("version", i)
+})
+
+ui.start.click(function() {
+    w.setSize(600, 200)
+    toast('显示悬浮框')
+})
+
+ui.compile.click(function() {
+    const r = getCommandResult(ui.custom.text())
+    ui.result.setText(r.resultText)
+})
+
+ui.save.click(function() {
+    const r = getCommandResult(ui.custom.text())
+    storage.put('customCmd', r.rawText)
+    toast('保存成功')
+})
