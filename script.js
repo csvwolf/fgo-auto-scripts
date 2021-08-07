@@ -73,7 +73,6 @@ function useCustom(t) {
     result.forEach((r) => {
         findAttack()
         r.forEach((u) => {
-            console.log(u, u.f, u.p)
             u.f(u.p)
         })
         fight()
@@ -88,61 +87,20 @@ function use3TInDiamond() {
 
 function use2004() {
     useCustom(defaults.Future2004)
-    // findAttack()
-    // // 一面
-    // use(C1S3)
-    // use(C3S3)
-    // use(R1S1)
-    // use(R1S2)
-    // use(C1S2)
-    // use(C3S2)
-    // use(C1S1)
-    // use(C3S1)
-    // fight()
-    
-    // // 二面
-    // findAttack()
-    // useMasterSkill(MasterSkill3)
-    // use(R1S3)
-    // fight()
-    
-    // // 三面
-    // useMasterSkill(MasterSkill1)
-    // fight()
-    // toast('end')
 }
 
 // 苍玉的魔法少女
 function use3TInBlue() {
     useCustom(defaults.BlueMagicGirl)
-    // findAttack()
-    // // 一面
-    // use(C1S2)
-    // use(C3S2)
-    // use(C1S3)
-    // use(C3S3)
-    // use(R1S1)
-    // use(R1S2)
-    // use(C3S1)
-
-    // fight()
-
-    // // 二面
-    // findAttack()
-    // use(C1S1)
-    // fight()
-    
-    
-
-    // // 三面
-    // findAttack()
-    // use(R1S3)
-    // fight()
-    // toast('end')
 }
 
 function eatApple() {
     if (findButton(GoldAppleImage, {maxTimes:10})) {
+        if (!apple) {
+            toast('体力没有了，不吃苹果，游戏结束')
+            console.log('别吃啊！！！')
+            return false
+        }
         click1(1365, 471)
         sleep1(300)
         click1(1603,835)
@@ -150,6 +108,7 @@ function eatApple() {
     } else {
         toast('不用吃苹果')
     }
+    return true
 }
 
 function clickRefresh() {
@@ -221,10 +180,12 @@ while (true) {
     nextTurn()
     sleep1(3000)
     toast('next')
-    if (apple) {
-        eatApple()
-        sleep1(2000)
+    // 如果不勾选苹果，苹果用光就退出脚本
+    if (!eatApple()) {
+        console.log('苹果用光拉，结束战斗')
+        break
     }
+    sleep1(2000)
     clickRefresh()
     toast('1 turn end')
 }

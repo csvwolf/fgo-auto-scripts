@@ -1,16 +1,19 @@
 {
   "assets": [],
   "build": {
-    "build_number": 0,
-    "build_time": 0,
+    "build_id": "5DE5D931-1",
+    "build_number": 1,
+    "build_time": 1628356496362,
     "release": false
   },
   "encryptLevel": 0,
   "useFeatures": [],
+  "icon": "res/icon.png",
   "launchConfig": {
     "displaySplash": true,
     "hideLogs": false,
-    "splashText": "Powered by Auto.js Pro",
+    "splashIcon": "res/splashIcon.png",
+    "splashText": "BY 不保修的敖天羽",
     "stableMode": true
   },
   "main": "main.js",
@@ -22,11 +25,16 @@
   },
   "packageName": "me.codesky.fgo",
   "permissionConfig": {
+    "manifestPermissions": [
+      "android.permission.FOREGROUND_SERVICE",
+      "android.permission.SYSTEM_ALERT_WINDOW"
+    ],
     "requestListOnStartup": [
-      "android.permission.WRITE_EXTERNAL_STORAGE"
+      "android.permission.FOREGROUND_SERVICE",
+      "android.permission.SYSTEM_ALERT_WINDOW"
     ]
   },
   "scripts": {},
   "versionCode": 1,
-  "versionName": "1.0.0"
+  "versionName": "0.0.1"
 }

@@ -138,7 +138,6 @@ const translate = function(i) {
  * ---\n
  * 区分一面二面和三面
  * 
- * 默认所有技能都会给 2 号从者，暂时不支持换着拐人
  * @param {*} text 
  * @returns resultText 翻译文本
  * @returns result 结果

@@ -98,10 +98,25 @@ ui.apple.on("check", (checked) => {
 });
 
 ui.version.setOnCheckedChangeListener(function (radioGroup, id) {
-    let i = id % radioGroup.getChildCount()
-    if (i == 0) { i = radioGroup.getChildCount() }
-    const r = radioGroup.getChildAt(i - 1).getText()
+    let i = 1
+    let viewId = radioGroup.getCheckedRadioButtonId()
+    let radioView = ui.findView(viewId)
+    const r = radioView.getText().toString()
     toast(r)
+    switch (r) {
+        case '苍玉的魔法少女':
+            i = 1
+            break
+        case '宝石翁':
+            i = 2
+            break
+        case '2048御主服':
+            i = 3
+            break
+        case '自定义':
+            i = 4
+            break
+    }
     storage.put("version", i)
 })
 
