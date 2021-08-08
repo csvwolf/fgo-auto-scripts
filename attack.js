@@ -13,9 +13,11 @@ var getCommands = require('./commands')
 
 setScreenMetrics(1080, 2340)
 
-const click1 = utils.click
-const sleep1 = utils.sleep
-const readImage = utils.readImage
+var click1 = utils.click
+var sleep1 = utils.sleep
+var readImage = utils.readImage
+// autojs 这个 node 版本 const 分析的不对，没办法还是用 var 吧
+var findButton = utils.findButton
 
 const storage = storages.create("fgo")
 const apple = storage.get("apple") || false
@@ -33,28 +35,6 @@ const NextImage =  readImage('./assets/next.jpg')
 const HelpImage = readImage('./assets/help-v2.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
 const Attack = readImage('./assets/attack.jpg')
-
-events.on('exit', function() {
-    NextImage.recycle()
-    HelpImage.recycle()
-    GoldAppleImage.recycle()
-    Attack.recycle()
-})
-
-function findButton(b, options) {
-    const maxTimes = options ? options.maxTimes || 100 : 200
-    const interval = options ? options.interval || 100  : 100
-    const threshold = options ? options.threshold || 0.7 : 0.76
-    
-    for (let i = 0; i < maxTimes; i++) {
-        const point = findImage(captureScreen(), b, { threshold: threshold })
-        if (point) {
-            return [point.x, point.y]
-        }
-        sleep1(interval)
-    }
-    return false
-}
 
 function fight() {
     click1(Battle[0],Battle[1])
@@ -173,8 +153,20 @@ function useVersion() {
     }
 }
 
+var i = 0
+
+
+events.on('exit', function() {
+    toast('共刷 ' + i + ' 轮')
+    NextImage.recycle()
+    HelpImage.recycle()
+    GoldAppleImage.recycle()
+    Attack.recycle()
+})
+
 
 while (true) {
+    i++
     useVersion()
     toast('3t end')
     nextTurn()
