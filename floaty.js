@@ -7,6 +7,8 @@ module.exports = function() {
             <button id="kill" text="x" w="40" h="40" bg="#77ffffff" />
         </horizontal>
     );
+
+    window.setPosition(0, 200)
     
     setInterval(() => {}, 1000)
     
