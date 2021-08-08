@@ -73,4 +73,7 @@ GitHub Relaease: <https://github.com/csvwolf/fgo-auto-scripts/releases>
 ## Screenshot
 安卓 UI 我不会啊！
 
-![IMG_20210808_015551](https://user-images.githubusercontent.com/8280645/128609657-31738dec-808f-4863-a634-6e4db2004e66.jpg)
+![Screenshot_2021-08-08-15-02-01-375_org autojs aut](https://user-images.githubusercontent.com/8280645/128623898-1edf583a-ea39-4dd1-b061-c28f82cbbe9c.jpg)
+![Screenshot_2021-08-08-15-02-05-522_org autojs aut](https://user-images.githubusercontent.com/8280645/128623901-459d9c90-c935-43d8-9dba-7e655d4ef2f1.jpg)
+![Screenshot_2021-08-08-15-02-07-903_org autojs aut](https://user-images.githubusercontent.com/8280645/128623904-27190928-3705-42ba-8094-a6a07270e64b.jpg)
+
