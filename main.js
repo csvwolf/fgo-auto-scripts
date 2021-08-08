@@ -47,9 +47,9 @@ ui.layout(
                             <text textSize='16sp'>自定义</text>
                                 <horizontal>
                                     <text>保存的配置</text>
-                                    <spinner id="configs" spinnerMode="dialog" entries=""></spinner>
-                                    <button id="loadConfig">加载</button>
-                                    <button id="deleteConfig">删除</button>
+                                    <spinner id="configs" w="150" spinnerMode="dialog" entries=""></spinner>
+                                    <button id="loadConfig" w="60">加载</button>
+                                    <button id="deleteConfig" w="60">删除</button>
                                 </horizontal>
                                 <button id="clear">清空输入框</button>
                                 <input id="custom" inputType="textMultiLine"/>
