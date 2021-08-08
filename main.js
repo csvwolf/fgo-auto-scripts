@@ -151,7 +151,7 @@ ui.version.setOnCheckedChangeListener(function (radioGroup, id) {
         case '2004御主服':
             i = 3
             break
-        case '自定义':
+        case '自定义（请在自定义页面配置）':
             i = 4
             break
     }
