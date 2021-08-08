@@ -121,9 +121,9 @@ const ChangeList = {
 const translate = function(i) {
   switch (i[1]) {
     case 's':
-      return '从者 ' + i[2] + ' 技能 ' + i[3] + '给 ' + i[4] + ' 从者\n'
+      return '从者 ' + i[2] + ' 技能 ' + i[3] + '给 ' + (i[4] || 2) + ' 从者\n'
     case 'm':
-      return '御主技能 ' + i[2] + '给 ' + i[4] + '从者\n'
+      return '御主技能 ' + i[2] + '给 ' + (i[4] || 2) + '从者\n'
     case 'c':
       return '换人 从者 ' + i[2] + '与 ' + i[3] + ' 交换\n'
   }
@@ -141,6 +141,7 @@ const translate = function(i) {
  * @param {*} text 
  * @returns resultText 翻译文本
  * @returns result 结果
+ * @rawText 
  */
 module.exports = function (text) {
   let resultText = ''
