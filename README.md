@@ -1,4 +1,6 @@
 # FGO scripting
+主要功能使用指南：https://github.com/csvwolf/fgo-auto-scripts/wiki
+
 ## 说明
 安卓 App FGO 自动刷图。
 
