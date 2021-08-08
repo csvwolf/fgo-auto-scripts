@@ -148,7 +148,7 @@ ui.version.setOnCheckedChangeListener(function (radioGroup, id) {
         case '宝石翁':
             i = 2
             break
-        case '2048御主服':
+        case '2004御主服':
             i = 3
             break
         case '自定义':
