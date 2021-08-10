@@ -112,6 +112,9 @@ ui.layout(
     </drawer>
 );
 
+// 不开报了奇怪的 error
+$settings.setEnabled('foreground_service', true);
+
 activity.setSupportActionBar(ui.toolbar)
 
 ui.apple.checked = storage.get("apple") || false
