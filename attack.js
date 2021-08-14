@@ -34,18 +34,17 @@ const Card1= [475,764]
 const Card2 = [855,764]
 
 const NextImage =  readImage('./assets/next.jpg')
-const HelpImage = readImage('./assets/caster-1.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
 const Attack = readImage('./assets/attack.jpg')
 
 function fight() {
-    click1(Battle[0],Battle[1])
+    click1(Battle[0],Battle[1], true)
     sleep1(1500)
-    click1(CardSP[0],CardSP[1])
+    click1(CardSP[0],CardSP[1], true)
     sleep1(500)
-    click1(Card1[0],Card1[1])
+    click1(Card1[0],Card1[1], true)
     sleep1(500)
-    click1(Card2[0],Card2[1])
+    click1(Card2[0],Card2[1], true)
     sleep1(20000)
 }
 
@@ -83,9 +82,9 @@ function eatApple() {
             console.log('别吃啊！！！')
             return false
         }
-        click1(1365, 471)
+        click1(1365, 471, true)
         sleep1(300)
-        click1(1603,835)
+        click1(1603,835, true)
         console.log('吃屎啦你')
     } else {
         toast('不用吃苹果')
@@ -111,11 +110,11 @@ function nextTurn() {
     toast('完成')
     let p = null
     while (!p) {
-        click1(1920,993)
+        click1(1920,993, true)
         sleep1(300)
         p = findButton(NextImage, {maxTimes:1})
     }
-    click(1564, 852)
+    click1(1564, 852, true)
 
 }
 
@@ -146,7 +145,6 @@ var i = 0
 events.on('exit', function() {
     toast('共刷 ' + i + ' 轮')
     NextImage.recycle()
-    HelpImage.recycle()
     GoldAppleImage.recycle()
     Attack.recycle()
 })

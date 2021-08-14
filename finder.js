@@ -47,7 +47,7 @@ function findServantAndSwipe(servant) {
     if (p) {
       return p
     }
-    swipe1(1600, 1000, 1600, 500, 600)
+    swipe1(1600, 1000, 1600, 500, 600, true)
     sleep(200)
   }
   return p
@@ -57,9 +57,9 @@ function find(servant) {
   p = findServantAndSwipe(servant)
 
   while (!p) {
-    click1(1566,183)
+    click1(1566,183, true)
     sleep1(300)
-    click1(1576,842)
+    click1(1576,842, true)
     sleep1(3000)
 
     p = findServantAndSwipe(servant)
@@ -69,16 +69,17 @@ function find(servant) {
     sleep1(15000)
     toast('接着找')
  }
- click1(p[0],p[1])
+ click1(p[0],p[1], false)
  toast('找到啦 ' + p[0] + ',' + p[1]) 
  sleep1(3000)
 }
 
 events.on('exit', function() {
   for (let key in images) {
-    images[key]
     for (let i = 0; i <= images[key].length; i++) {
-      images[key][i].recycle()
+      if (images[key][i]) {
+        images[key][i].recycle()
+      }
     }    
   }
 })

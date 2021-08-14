@@ -47,7 +47,7 @@ const ChangeS6 = [2008, ChangeY]
 const ChangeConfirm = [1353, 958]
 
 function useMasterSkill(i) {
-  click2(MasterSkillStart[0], MasterSkillStart[1])
+  click2(MasterSkillStart[0], MasterSkillStart[1], true)
   sleep2(150)
   use(i)
 }
@@ -55,28 +55,28 @@ function useMasterSkill(i) {
 function use(t) {
   var i = t[0]
   var avatar = t[1]
-  click2(i[0],i[1])
+  click2(i[0],i[1], true)
   sleep2(200)
-  click2(Confirm[0],Confirm[1])
+  click2(Confirm[0],Confirm[1], true)
   sleep2(100)
-  click2(avatar[0],avatar[1])
+  click2(avatar[0],avatar[1], true)
   sleep2(3000)
 }
 
 // t: [from, to]
 function changeServant(t) {
-  click2(MasterSkillStart[0], MasterSkillStart[1])
+  click2(MasterSkillStart[0], MasterSkillStart[1], true)
   sleep2(150)
   // 换人服是三技能
-  click2(MasterSkill3[0], MasterSkill3[1])
+  click2(MasterSkill3[0], MasterSkill3[1], true)
   sleep2(200)
-  click2(Confirm[0],Confirm[1])
+  click2(Confirm[0],Confirm[1], true)
   sleep2(100)
-  click2(t[0][0], t[0][1])
+  click2(t[0][0], t[0][1], true)
   sleep2(100)
-  click2(t[1][0], t[1][1])
+  click2(t[1][0], t[1][1], true)
   sleep2(100)
-  click2(ChangeConfirm[0], ChangeConfirm[1])
+  click2(ChangeConfirm[0], ChangeConfirm[1], true)
   sleep2(3000)
 }
 
