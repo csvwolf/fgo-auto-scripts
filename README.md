@@ -2,7 +2,7 @@
 主要功能使用指南：https://github.com/csvwolf/fgo-auto-scripts/wiki
 
 ## 说明
-安卓 App FGO 自动刷图。
+安卓 App FGO 自动刷图（使用前请开启技能确认功能）。
 
 **不保证都能用，坐标偏移不修（可能是不同设备分辨率之类的奇怪的问题）**
 
