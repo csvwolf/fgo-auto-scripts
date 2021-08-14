@@ -1,10 +1,9 @@
-
 var utils = require('./utils')
 
 setScreenMetrics(1080, 2340)
 
-const click2 = utils.click
-const sleep2 = utils.sleep
+var click2 = utils.click
+var sleep2 = utils.sleep
 
 const SkillY = 880
 const MasterSkillY = 479

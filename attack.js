@@ -8,6 +8,7 @@ if (!requestScreenCapture(true)) {
 sleep(300)
 
 var utils = require('./utils')
+var finder = require('./finder')
 var defaults = require('./default')
 var getCommands = require('./commands')
 
@@ -16,6 +17,7 @@ setScreenMetrics(1080, 2340)
 var click1 = utils.click
 var sleep1 = utils.sleep
 var readImage = utils.readImage
+var findServant = finder.findServant
 // autojs 这个 node 版本 const 分析的不对，没办法还是用 var 吧
 var findButton = utils.findButton
 
@@ -32,7 +34,7 @@ const Card1= [475,764]
 const Card2 = [855,764]
 
 const NextImage =  readImage('./assets/next.jpg')
-const HelpImage = readImage('./assets/help-v2.jpg')
+const HelpImage = readImage('./assets/caster-1.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
 const Attack = readImage('./assets/attack.jpg')
 
@@ -92,22 +94,7 @@ function eatApple() {
 }
 
 function clickRefresh() {
-    let p = findButton(HelpImage, {maxTimes:10, threshold: 0.7})
-    while (!p) {
-       click1(1566,183)
-       sleep1(300)
-       click1(1576,842)
-       sleep1(3000)
-       p = findButton(HelpImage, {maxTimes:100, threshold: 0.7})
-       if (p) { 
-           break
-       }
-       sleep1(15000)
-       toast('接着找')
-    }
-    click1(p[0],p[1])
-    toast('找到啦')
-    sleep1(3000)
+    findServant('caster')
 }
 
 
