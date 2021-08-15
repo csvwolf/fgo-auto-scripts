@@ -145,13 +145,13 @@ const translate = function(i) {
 module.exports = function (text) {
   let resultText = ''
   let result = []
-  const turns = text.split('---\n').filter((i) => !!i)
+  const turns = text.split('---')
   for (let i = 0; i < turns.length; i++) {
     resultText += '第' + (i + 1) + '面\n'
     result.push([])
 
     // 解析命令
-    turns[i].split('\n').filter((c) => !!c).forEach(function(command) {
+    turns[i].split('\n').map(i => i.trim()).filter((c) => !!c).forEach(function(command) {
       const c = /^(\w):(\d),(\d),(\d)$/.exec(command)
       if (!c) {
         toast('错误的指令')
