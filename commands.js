@@ -5,7 +5,7 @@ setScreenMetrics(1080, 2340)
 var click2 = utils.click
 var sleep2 = utils.sleep
 
-const SkillY = 880
+const SkillY = 846
 const MasterSkillY = 479
 const ChangeY = 536
 const AvatarY = 614
@@ -16,25 +16,25 @@ const Avatar3 = [1660, AvatarY]
 const Confirm = [1569,655]
 
 // 从者一号位
-const C1S1 = [370,SkillY]
-const C1S2 = [507,SkillY]
-const C1S3 = [619,SkillY]
+const C1S1 = [293,SkillY]
+const C1S2 = [390,SkillY]
+const C1S3 = [530,SkillY]
 
 // 从者二号位
-const R1S1 = [852,SkillY]
-const R1S2 = [997,SkillY]
-const R1S3 = [1129,SkillY]
+const R1S1 = [740,SkillY]
+const R1S2 = [872,SkillY]
+const R1S3 = [1037,SkillY]
 
 // 从者三号位
-const C3S1 = [1315,SkillY]
-const C3S2 = [1452,SkillY]
-const C3S3 = [1584,SkillY]
+const C3S1 = [1232,SkillY]
+const C3S2 = [1391,SkillY]
+const C3S3 = [1500,SkillY]
 
 // 御主技能
-const MasterSkillStart = [2047, MasterSkillY]
-const MasterSkill1 = [1633, MasterSkillY]
-const MasterSkill2 = [1770, MasterSkillY]
-const MasterSkill3 = [1892, MasterSkillY]
+const MasterSkillStart = [2110, MasterSkillY]
+const MasterSkill1 = [1700, MasterSkillY]
+const MasterSkill2 = [1815, MasterSkillY]
+const MasterSkill3 = [1968, MasterSkillY]
 
 // 换人坐标点
 // 换人是三技能
