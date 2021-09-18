@@ -1,6 +1,8 @@
 # FGO scripting
 主要功能使用指南：https://github.com/csvwolf/fgo-auto-scripts/wiki
 
+**目前暂时还没研究全面屏的适配，所以不确保别的设备使用情况**
+
 ## 说明
 安卓 App FGO 自动刷图（使用前请**开启技能确认**功能）。
 
@@ -8,7 +10,7 @@
 
 确定可以的测试设备：
 - MI 10(MIUI 12.5)
-- MI 8(MIUI Global 12.0.1)
+- <del>MI 8(MIUI Global 12.0.1)</del>
 
 ### Features
 #### 刷图
