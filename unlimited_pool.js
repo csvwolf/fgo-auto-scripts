@@ -43,11 +43,6 @@ while (true) {
     }
     click1(resetPosition[0], resetPosition[1], false)
     sleep1(500)
-    // const executePosition = findButton(Execute, { maxTimes: 1 })
-    // if (!executePosition) {
-    //   console.log('找不到 execute')
-    //   continue
-    // }
     click1(Execute[0], Execute[1], true)
     sleep(4000)
     click1(Close[0], Close[1], true)
@@ -57,9 +52,6 @@ while (true) {
   const position = findButton(UnlimitedBtn, { maxTimes: 5 })
   if (position) {
     click1(position[0], position[1], false)
-    toast('抽完了一次！')
-    // 在这里才开始
-    // click1(Blank[0], Blank[1], true)
     i++
   }
 
