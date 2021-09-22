@@ -223,7 +223,9 @@ ui.friendPoolButton.click(function() {
 })
 
 ui.unlimitedPoolButton.click(function() {
-    toast('没做呢')
+    w.setSize(600, 200)
+    storage.put('scriptOption', 'unlimited_pool')
+    stopExecution(w, execution.p)
 })
 
 //-----下面是一坨屎 别动了

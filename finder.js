@@ -12,6 +12,7 @@ var readImage = utils.readImage
 // autojs 这个 node 版本 const 分析的不对，没办法还是用 var 吧
 var findButton = utils.findButton
 var images = {}
+var ListUpdate = [1500, 220]
 
 function initImages () {
   for (let key in servants) {
@@ -57,7 +58,7 @@ function find(servant) {
   p = findServantAndSwipe(servant)
 
   while (!p) {
-    click1(1566,183, true)
+    click1(ListUpdate[0], ListUpdate[1], true)
     sleep1(300)
     click1(1576,842, true)
     sleep1(3000)

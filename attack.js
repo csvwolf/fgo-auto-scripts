@@ -28,10 +28,10 @@ const customCmd = storage.get('customCmd') || ''
 
 toast(apple ? '吃苹果' : '不吃苹果')
 
-const Battle = [1953,900]
+const Battle = [2010,910]
 const CardSP = [1199,340]
-const Card1= [475,764]
-const Card2 = [855,764]
+const Card1= [443,764]
+const Card2 = [790,764]
 
 const NextImage =  readImage('./assets/next.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
@@ -76,13 +76,14 @@ function use3TInBlue() {
 }
 
 function eatApple() {
-    if (findButton(GoldAppleImage, {maxTimes:10})) {
+    const appleImage = findButton(GoldAppleImage, {maxTimes:10})
+    if (appleImage) {
         if (!apple) {
             toast('体力没有了，不吃苹果，游戏结束')
             console.log('别吃啊！！！')
             return false
         }
-        click1(1365, 471, true)
+        click1(appleImage[0], appleImage[1], true)
         sleep1(300)
         click1(1603,835, true)
         console.log('吃屎啦你')
