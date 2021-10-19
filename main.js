@@ -105,6 +105,7 @@ ui.layout(
                     <vertical>
                         <button id="friendPoolButton">自动抽友情池</button>
                         <button id="unlimitedPoolButton">自动抽无限池</button>
+                        <button id="test">测试功能</button>
                     </vertical>
                 </frame>
             </viewpager>
@@ -225,6 +226,12 @@ ui.friendPoolButton.click(function() {
 ui.unlimitedPoolButton.click(function() {
     w.setSize(600, 200)
     storage.put('scriptOption', 'unlimited_pool')
+    stopExecution(w, execution.p)
+})
+
+ui.test.click(function() {
+    w.setSize(600, 200)
+    storage.put('scriptOption', 'test')
     stopExecution(w, execution.p)
 })
 
